@@ -23,12 +23,21 @@
             </li>
           </ul>
         </nav>
+
+        <div class="ml-auto flex h-full items-center">
+          <ProfileImage v-if="isLoggedIn" />
+          <ActionButton button-msg="Sign in" v-else @click="logged" />
+        </div>
       </div>
     </div>
   </header>
 </template>
 
 <script setup>
+import {ref} from "vue";
+import ActionButton from "../UI/ActionButton.vue";
+import ProfileImage from "../UI/ProfileImage.vue";
+
 const company = "Careers";
 const url = "https://careers.google.com/";
 const menuItems = [
@@ -38,6 +47,9 @@ const menuItems = [
   "How we hire",
   "Jobs",
 ];
+const isLoggedIn = ref(false);
+
+const logged = () => (isLoggedIn.value = true);
 </script>
 
 <style lang="scss" scoped></style>

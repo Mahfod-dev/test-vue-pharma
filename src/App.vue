@@ -2,7 +2,7 @@
 <template><MainNav /></template>
 
 <script setup>
-import MainNav from "./components/MainNav.vue";
+import MainNav from "./components/Header/MainNav.vue";
 </script>
 
 <style scoped></style>

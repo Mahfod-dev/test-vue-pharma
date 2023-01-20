@@ -2,7 +2,8 @@
 
 import {render, screen} from "@testing-library/vue";
 
-import MainVue from "@/components/MainNav.vue";
+import MainVue from "@/components/Header/MainNav.vue";
+import userEvent from "@testing-library/user-event";
 
 describe("MainVue.vue", () => {
   it("renders a message", () => {
@@ -28,5 +29,34 @@ describe("MainVue.vue", () => {
       "How we hire",
       "Jobs",
     ]);
+  });
+
+  it("describe when user not log in", async () => {
+    render(MainVue);
+
+    const profileImage = screen.queryByRole("img", {
+      name: /User profile image/i,
+    });
+    expect(profileImage).not.toBeInTheDocument();
+
+});
+
+  it("describe user logs in", async () => {
+    render(MainVue);
+
+  
+    
+    const loginButton = screen.getByRole("button", {
+      name: /sign in/i,
+    });
+
+    await userEvent.click(loginButton);
+
+   const profileImage = screen.queryByRole("img", {
+     name: /User profile image/i,
+   });
+
+    expect(profileImage).toBeInTheDocument()
+
   });
 });
