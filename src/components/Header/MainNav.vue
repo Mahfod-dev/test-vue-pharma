@@ -26,7 +26,7 @@
 
         <div class="ml-auto flex h-full items-center">
           <ProfileImage v-if="isLoggedIn" />
-          <ActionButton button-msg="Sign in" v-else @click="logged" />
+          <ActionButton button-msg="Sign in" type="primary" v-else />
         </div>
       </div>
     </div>
@@ -34,7 +34,6 @@
 </template>
 
 <script setup>
-import {ref} from "vue";
 import ActionButton from "../UI/ActionButton.vue";
 import ProfileImage from "../UI/ProfileImage.vue";
 
@@ -47,9 +46,6 @@ const menuItems = [
   "How we hire",
   "Jobs",
 ];
-const isLoggedIn = ref(false);
-
-const logged = () => (isLoggedIn.value = true);
 </script>
 
 <style lang="scss" scoped></style>
